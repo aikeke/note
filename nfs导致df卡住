@@ -1,0 +1,13 @@
+1.最近使用nfs来存储文件，但是在客户端节点遇到了问题。
+
+用df -h的时候系统直接就卡住了。
+
+后来百度了一下，发现网上好多遇到这种问题的。是因为nfs的server其实已经挂了，但是客户端还存在。所以会出现这种情况，这里复制一段一位大神的语录：
+
+之前开发时就碰到过nfs客户端卡住的情况，umount -f /mnt提示device is busy，并且尝试访问挂载目录、df -h等操作都会使终端卡住，ctrl+c也不能强行退出。
+造成这种现象的原因是nfs服务器/网络挂了，nfs客户端默认采用hard-mount选项，而不是soft-mount。他们的区别是
+soft-mount: 当客户端加载NFS不成功时，重试retrans设定的次数.如果retrans次都不成功，则放弃此操作，返回错误信息 "Connect time out"
+hard-mount: 当客户端加载NFS不成功时,一直重试，直到NFS服务器有响应。hard-mount 是系统的缺省值。在选定hard-mount 时，最好同时选 intr , 允许中断系统的调用请求，避免引起系统的挂起。当NFS服务器不能响应NFS客户端的 hard-mount请求时， NFS客户端会显示
+"NFS server hostname not responding, still trying"
+mount -t nfs -o soft 192.168.1.2:/home/nfs /mnt
+原文链接：https://blog.csdn.net/brotherdong90/article/details/51735632
