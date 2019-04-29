@@ -1,0 +1,3 @@
+1.[error]invalid PID number in nginx.pid 
+nginx 重启的时候，需要知道自身的PID是多少，而这个值是在?nginx.pid?中，如果这个文件的值被修改或者删除，就会出现问题。把nginx的主进程的pid写入?nginx.pid文件就行了
+
