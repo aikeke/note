@@ -1,0 +1,8 @@
+1.sudo cd不能执行
+cd不是一个应用程序而是Linux内建的命令，而sudo仅仅只对应用程序起作用。
+使用sudo -i命令提升用户权限
+> sudo -i
+> cd /etc/docker
+使用sudo -s命令打开特殊shell
+> sudo -s
+> cd /etc/docker
