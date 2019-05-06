@@ -1,1 +1,3 @@
 1.权限位最后有个点含义：如果在文件的权限位中含有"."，则表示这个文件受 SELinux 的安全规则管理。
+2.su到某个用户或执行whoami时报错如下:
+whoami: cannot find name for user ID xxx原因是/etc/passwd权限太小，改成644权限就好了,同理，/etc/group也可能存在这个问题
