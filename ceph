@@ -1,0 +1,5 @@
+1.ceph-deploy install报错
+[ceph_deploy][ERROR ] RuntimeError: 
+Failed to execute command: rpm -Uvh --replacepkgs http://ceph.com/rpm-hammer/el7/noarch/ceph-release-1-0.el7.noarch.rpm
+
+--no-adjust-repos 可以忽略这个逗逼源
